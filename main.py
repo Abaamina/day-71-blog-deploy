@@ -103,8 +103,8 @@ def admin_only(function):
     return wrapper_function
 
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 # TODO: Use Werkzeug to hash the user's password when creating a new user.
