@@ -42,8 +42,7 @@ def load_user(user_id):
 
 # CONNECT TO DB
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://posts_9oop_user:4hDC4OyqlHcjGvug5LmDGYKkCvlcniDM@dpg-ck4kod42kpls73ek9fb0-a/posts_9oop"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 db = SQLAlchemy()
 db.init_app(app)
 
@@ -103,8 +102,8 @@ def admin_only(function):
     return wrapper_function
 
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 # TODO: Use Werkzeug to hash the user's password when creating a new user.
